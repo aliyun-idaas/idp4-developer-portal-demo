@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Header</title>
+
+
+    <div th:fragment="public-css">
+        <link rel="stylesheet" href="../../../static/lib/bootstrap/css/bootstrap.min.css"
+              th:href="@{/static/lib/bootstrap/css/bootstrap.min.css}"/>
+    </div>
+
+</head>
+<body>
+
+<div th:fragment="public-header">
+    <nav class="navbar navbar-default navbar-static-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="" th:href="@{/}">门户系统</a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <!--<p class="navbar-text">门户系统</p>-->
+
+                <form th:if="${session.loginType eq 'idaas-api'}" action="" th:action="@{/signout_self}" class="navbar-form navbar-right" role="search" method="post">
+                    <button type="submit" class="btn btn-default">退出（仅退出自己）</button>
+                </form>
+
+                <form th:if="${session.loginType eq 'idaas-page'}" action="" th:action="@{/signout_self_with_idaas}" class="navbar-form navbar-right" role="search" method="post">
+                    <button type="submit" class="btn btn-default">退出（退出自己和IDaaS的会话）</button>
+                </form>
+
+                <p class="navbar-text pull-right"><a href=""><span th:text="${session.username}">user</span></a></p>
+            </div>
+        </div>
+    </nav>
+</div>
+
+</body>
+</html>

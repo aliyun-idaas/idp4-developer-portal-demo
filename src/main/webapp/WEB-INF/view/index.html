@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="shortcut icon" href="../../static/favicon.ico" th:href="@{/static/favicon.ico}"/>
+
+    <title>统一门户</title>
+
+    <th:block th:include="fragments/header :: public-css"/>
+    <style>
+        .app-content{
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .app-item{
+            width: 220px;
+            padding: 30px 0;
+            text-align: center;
+            margin: 15px;
+            border:1px solid #e5e5e5;
+        }
+        .app-item img{
+            width: 80px;
+            height: 80px;
+        }
+        .img-box{
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+
+<div th:replace="fragments/header :: public-header"/>
+
+<div class="container">
+    <h3>Welcome Portal Demo</h3>
+
+    <p>Logged: <span th:text="${session.username}">user</span></p>
+
+    <div  class="app-content">
+
+        <div class="app-item" th:each="app : ${appModelList}">
+            <a th:href="${app.startUrl}" target="_blank">
+                <div class="img-box"><img th:src="${idaasHost}+'/public/app_image/'+${app.idpApplicationId}+'/?logoUuid='+${app.logoUuid}" /></div>
+                <div th:text="${app.name}" class="app-name"></div>
+            </a>
+        </div>
+
+    </div>
+
+</div>
+
+<hr/>
+<div th:replace="fragments/footer :: footer-default"/>
+</body>
+</html>
