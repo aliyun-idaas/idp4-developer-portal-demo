@@ -1,7 +1,16 @@
 # idp4-developer-portal-demo
 IDP4门户(Portal)集成demo
 
-# Read Me First
+## 开发环境要求
+- Java  v1.8+
+- Maven 3.3+
+- 字符编码：UTF-8
+
+## 使用框架与版本
+- Springboot 2.4.5
+
+
+## 如何使用
 请先在IDaaS创建一个oauth2应用，然后
 找到项目配置文件application.properties,
 补充完善下面对应的idaas相关配置参数
