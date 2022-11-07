@@ -41,7 +41,7 @@
     <div  class="app-content">
 
         <div class="app-item" th:each="app : ${appModelList}">
-            <a th:href="${app.startUrl}" target="_blank">
+            <a th:href="@{/startSso(ssoUrl=${app.startUrl})}" target="_blank">
                 <div class="img-box"><img th:src="${idaasHost}+'/public/app_image/'+${app.idpApplicationId}+'/?logoUuid='+${app.logoUuid}" /></div>
                 <div th:text="${app.name}" class="app-name"></div>
             </a>

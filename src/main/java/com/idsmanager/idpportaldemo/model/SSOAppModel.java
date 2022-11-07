@@ -56,18 +56,13 @@ public class SSOAppModel implements Serializable {
     public SSOAppModel() {
     }
 
-    public SSOAppModel(JSONObject obj, String accessToken) {
+    public SSOAppModel(JSONObject obj) {
         this.name = obj.optString("name");
         this.applicationId = obj.optString("applicationId");
         this.applicationUuid = obj.optString("applicationUuid");
         this.idpApplicationId = obj.optString("idpApplicationId");
         this.logoUuid = obj.optString("logoUuid");
-
-
         this.startUrl = obj.optString("startUrl");
-        //此处处理下access_token,有可能IDaaS返回startUrl的时候就已经带上了
-        this.startUrl = startUrl.contains("access_token") ? startUrl : startUrl + "?access_token=" + accessToken;
-
         this.createTime = obj.optString("createTime");
         this.description = obj.optString("description");
         this.enabled = obj.optBoolean("enabled");
@@ -208,12 +203,12 @@ public class SSOAppModel implements Serializable {
         this.orderId = orderId;
     }
 
-    public static List<SSOAppModel> toList(JSONArray appListJSONArray, String accessToken) {
+    public static List<SSOAppModel> toList(JSONArray appListJSONArray) {
         Iterator it = appListJSONArray.iterator();
         List<SSOAppModel> modelList = new ArrayList<>(appListJSONArray.size());
         while (it.hasNext()) {
             JSONObject obj = (JSONObject) it.next();
-            modelList.add(new SSOAppModel(obj, accessToken));
+            modelList.add(new SSOAppModel(obj));
         }
         return modelList;
     }

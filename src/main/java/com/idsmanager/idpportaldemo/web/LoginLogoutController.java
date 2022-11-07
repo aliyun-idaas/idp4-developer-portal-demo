@@ -131,7 +131,6 @@ public class LoginLogoutController {
             String ret = tokenClient.execute();
             LOG.debug("Send Request url[{}] with result[{}]", ret);
 
-
             JSONObject jsonObject = JSONObject.fromObject(ret);
             //若包含用户的access_token,则为登录成功
             if (jsonObject.containsKey("access_token")) {

@@ -22,12 +22,13 @@ idaas.portal.oauth2.appId=ceshiplugin_oauth2
 </pre>
 
 <pre>
-#API Key和 API Secret为调用IDaaS的接口登录用
+#API Key和 API Secret为调用IDaaS的账密接口登录用
 idaas.portal.oauth2.apiKey=
 idaas.portal.oauth2.apiSecret=
 </pre>
 
 <pre>
+使用OAuth2 授权码方式登录使用
 #Client Id 和 Client Secret ,Redirect URI 为拼接OAuth2应用授权地址（第一步）以及使用code获取用户access_token使用（第二步）
 idaas.portal.oauth2.clientId=
 idaas.portal.oauth2.clientSecret=
