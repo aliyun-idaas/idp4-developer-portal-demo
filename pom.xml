@@ -62,10 +62,34 @@
     </dependencies>
 
     <build>
+        <finalName>${project.artifactId}</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <artifactId>maven-war-plugin</artifactId>
+                <configuration>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                    <warSourceExcludes>*/classes/application.properties</warSourceExcludes>
+                    <packagingExcludes>*/classes/application.properties</packagingExcludes>
+                    <archive>
+                        <addMavenDescriptor>false</addMavenDescriptor>
+                        <manifestEntries>
+                            <Implementation-BuildNumber>${project.version}</Implementation-BuildNumber>
+                            <Implementation-Title>Implementation-Title</Implementation-Title>
+                            <Building-Time>${maven.build.timestamp}</Building-Time>
+                            <Implementation-Version>${project.version}</Implementation-Version>
+                            <Implementation-URL>https://idsmanager.com</Implementation-URL>
+                            <Implementation-Vendor>IDsManager Software, Inc.</Implementation-Vendor>
+                        </manifestEntries>
+                        <manifest>
+                            <!--<mainClass>${start-class}</mainClass>-->
+                            <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+                        </manifest>
+                    </archive>
+                </configuration>
             </plugin>
         </plugins>
     </build>
