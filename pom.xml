@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.idsmanager</groupId>
     <artifactId>idp4-developer-portal-demo</artifactId>
-    <version>0.0.1</version>
+    <version>1.0</version>
     <packaging>war</packaging>
     <name>idp4-developer-portal-demo</name>
     <description>IDP portal demo project for Spring Boot</description>
